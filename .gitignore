@@ -1,0 +1,6 @@
+# Config files
+.vscode
+.pylintrc
+
+# Misc.
+*.txt
