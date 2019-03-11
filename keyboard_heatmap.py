@@ -1,12 +1,11 @@
-#! /usr/env/python3
+#!/usr/bin/env python3
 '''Create a heatmap of the keys used over a period of time'''
 import json
 from collections import defaultdict
-from pprint import pprint
 from pynput.keyboard import Key, KeyCode, Listener
 
 # Create static dict
-with open('all_time.json') as file:
+with open('/home/blake/Dropbox/Projects/KeyboardHeatmap/all_time.json') as file:
     ALL_TIME = json.load(file)
 
 # Create defaultdict from current keys dict
@@ -29,7 +28,7 @@ try:
             on_press=on_press) as listener:
         listener.join()
 finally:
-    with open('all_time.json', "w") as file:
+    with open('/home/blake/Dropbox/Projects/KeyboardHeatmap/all_time.json', "w") as file:
         # Convert defaultdict back to normal dict
         ALL_TIME["keys"] = dict(ALL_TIME["keys"])
         file.write(json.dumps(ALL_TIME, sort_keys=True, indent=4, separators=(',', ':')))
